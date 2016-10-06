@@ -57,11 +57,6 @@ namespace HAProxyApi.Client
 		    return SendCommand("show stat", true);
 	    }
 
-		public string ShowStatus()
-		{
-			return SendCommand("show map", true);
-		}
-
 		public string ShowErrors()
 	    {
 		    return SendCommand("show errors", true);
