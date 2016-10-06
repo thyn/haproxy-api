@@ -15,18 +15,18 @@ Simple C# library to control HaProxy over TCP port.
 # Usage
 
 
-var client = new HaProxyClient("SERVER.DOMAIN.TLD", port);
-client.ShowErrors();
-client.ShowInfo();
-var servers = cli.ShowBackendServers();
-foreach (var backendServer in servers)
-{
-	Console.WriteLine($"{backendServer.BackendName}/{backendServer.Name} is {backendServer.OperationalState}");
-}
+	var client = new HaProxyClient("SERVER.DOMAIN.TLD", port);
+	client.ShowErrors();
+	client.ShowInfo();
+	var servers = cli.ShowBackendServers();
+	foreach (var backendServer in servers)
+	{
+		Console.WriteLine($"{backendServer.BackendName}/{backendServer.Name} is {backendServer.OperationalState}");
+	}
 
 sample result:
 
-backend1/server1 is SRV_ST_RUNNING
-backend1/server2 is SRV_ST_RUNNING
-backend2/server1 is SRV_ST_RUNNING
-backend2/server2 is SRV_ST_RUNNING
+	backend1/server1 is SRV_ST_RUNNING
+	backend1/server2 is SRV_ST_RUNNING
+	backend2/server1 is SRV_ST_RUNNING
+	backend2/server2 is SRV_ST_RUNNING
