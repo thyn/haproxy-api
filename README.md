@@ -4,7 +4,7 @@ Simple C# library to control HaProxy over TCP port.
 
 # HAProxy Config
 
-To enable HAproxy stats api you should turn it in section global of haproxy.conf. Do not forget to limit access to that port from global network.
+To enable HAproxy stats api you should turn it on in global section of haproxy.conf. Do not forget to limit access to that port from global network.
 
 	    stats socket ipv4@YOUR_HAPROXY_SERVER_IP:PORT level admin
 
