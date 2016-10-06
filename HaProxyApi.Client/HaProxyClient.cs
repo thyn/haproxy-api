@@ -11,7 +11,6 @@ using System.Text;
 using System.Threading.Tasks;
 using HAProxyApi.Client.Models;
 using LumenWorks.Framework.IO.Csv;
-using SimpleTCP;
 
 namespace HAProxyApi.Client
 {
