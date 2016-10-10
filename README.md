@@ -1,4 +1,4 @@
-# HAProxy Api Client
+# HAProxy Api Client For .Net
 
 Simple C# library to control HAProxy over TCP port.
 
