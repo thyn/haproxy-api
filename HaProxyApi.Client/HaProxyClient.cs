@@ -26,32 +26,34 @@ namespace HAProxyApi.Client
 	    }
 
 
-		public string SendCommand(string command,bool readAnswer = true)
-	    {
-			var client = new TcpClient(_hostNameOrIp, _port);
-		    NetworkStream stream = client.GetStream();
-		    var bytes = (ASCIIEncoding.ASCII.GetBytes(command + "\n"));
-			stream.Write(bytes, 0, bytes.Length);
-	
-			stream.ReadTimeout = 250;
-			string result = null;
-		    if (readAnswer)
-		    {
-				byte[] data = new byte[1024];
-				using (MemoryStream ms = new MemoryStream())
-				{
-					int numBytesRead;
-					while ((numBytesRead = stream.Read(data, 0, data.Length)) > 0)
-					{
-						ms.Write(data, 0, numBytesRead);
-					}
-					result = Encoding.ASCII.GetString(ms.ToArray(), 0, (int)ms.Length);
-				}
-			}
-		    return result;
-	    }
+		public string SendCommand(string command, bool readAnswer = true)
+		{
+			using (var client = new TcpClient(_hostNameOrIp, _port))
+			using (var stream = client.GetStream())
+			{
+				var bytes = (Encoding.ASCII.GetBytes(command + "\n"));
+				stream.Write(bytes, 0, bytes.Length);
 
-	    public string ShowInfo()
+				stream.ReadTimeout = 250;
+				string result = null;
+				if (readAnswer)
+				{
+					byte[] data = new byte[1024];
+					using (var ms = new MemoryStream())
+					{
+						int numBytesRead;
+						while ((numBytesRead = stream.Read(data, 0, data.Length)) > 0)
+						{
+							ms.Write(data, 0, numBytesRead);
+						}
+						result = Encoding.ASCII.GetString(ms.ToArray(), 0, (int)ms.Length);
+					}
+				}
+				return result;
+			}
+		}
+
+		public string ShowInfo()
 	    {
 		    return SendCommand("show stat", true);
 	    }
@@ -94,8 +96,6 @@ namespace HAProxyApi.Client
 							string.Equals(x.Name, server, StringComparison.OrdinalIgnoreCase));
 
 		}
-
-
 		public BackendServer EnableServer(string backend, string server)
 		{
 			SendCommand($"enable server {backend}/{server}");
@@ -165,8 +165,5 @@ namespace HAProxyApi.Client
 			property.SetValue(target, System.Convert.ChangeType(val, property.PropertyType));
 			return;
 		}
-
-
-
     }
 }
