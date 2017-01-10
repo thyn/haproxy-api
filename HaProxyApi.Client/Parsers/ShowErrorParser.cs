@@ -15,7 +15,7 @@ namespace HAProxyApi.Client.Parsers
 			};
 			if (!string.IsNullOrEmpty(rawShowErrorResult))
 			{
-				var match = Regex.Match(rawShowErrorResult, @" Total events captured on \[(?<date>.+)\].+: (?<total>\d+)",
+				var match = Regex.Match(rawShowErrorResult, @"Total events captured on \[(?<date>.+)\].+: (?<total>\d+)",
 					RegexOptions.Multiline);
 
 				if (match.Success)
