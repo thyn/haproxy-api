@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B0CFED97-3A34-4659-B5EE-9E1B6520C9F2}</ProjectGuid>
+    <ProjectGuid>{FAEE3375-0546-4718-AD2D-7CAE5F5F7C5B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HAProxyApi.Client</RootNamespace>
-    <AssemblyName>HAProxyApi.Client</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>HAProxyApi.Client.Tests</RootNamespace>
+    <AssemblyName>HAProxyApi.Client.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,12 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LumenWorks.Framework.IO, Version=3.9.1.0, Culture=neutral, PublicKeyToken=5ad3ea2f85776344, processorArchitecture=MSIL">
-      <HintPath>..\packages\LumenWorksCsvReader.3.9.1\lib\net20\LumenWorks.Framework.IO.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.6.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.6.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,19 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Backend.cs" />
-    <Compile Include="HaProxyClient.cs" />
-    <Compile Include="Models\BackendServer.cs" />
-    <Compile Include="Models\ChkResult.cs" />
-    <Compile Include="Models\ChkSt.cs" />
-    <Compile Include="Models\IHAProxyResponse.cs" />
-    <Compile Include="Models\IShowInfoResponse.cs" />
-    <Compile Include="Models\ShowInfoResponse.cs" />
-    <Compile Include="Parsers\ShowErrorParser.cs" />
-    <Compile Include="Parsers\ShowInfoParser.cs" />
-    <Compile Include="Models\SrvAdmin.cs" />
-    <Compile Include="Models\SrvState.cs" />
+    <Compile Include="ParseShowErrorResponseTest.cs" />
+    <Compile Include="ParseShowInfoResponseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HaProxyApi.Client\HAProxyApi.Client.csproj">
+      <Project>{b0cfed97-3a34-4659-b5ee-9e1b6520c9f2}</Project>
+      <Name>HAProxyApi.Client</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

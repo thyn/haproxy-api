@@ -10,6 +10,7 @@ using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using HAProxyApi.Client.Models;
+using HAProxyApi.Client.Parsers;
 using LumenWorks.Framework.IO.Csv;
 
 namespace HAProxyApi.Client
@@ -53,17 +54,35 @@ namespace HAProxyApi.Client
 			}
 		}
 
-		public string ShowInfo()
-	    {
-		    return SendCommand("show stat", true);
-	    }
 
-		public string ShowErrors()
+		private string ShowInfoRaw()
+		{
+			return SendCommand("show info", true);
+		}
+
+		public IShowInfoResponse ShowInfo()
+		{
+			return new ShowInfoParser().Parse(ShowInfoRaw());
+		}
+
+		public string ShowStatRaw()
+		{
+			return SendCommand("show stat", true);
+		}
+
+		private string ShowErrorsRaw()
 	    {
 		    return SendCommand("show errors", true);
 	    }
 
-	    public IEnumerable<Backend> ShowBackends()
+		public IShowErrorResponse ShowErrors()
+		{
+			var response = ShowErrorsRaw();
+
+			return new ShowErrorParser().Parse(response);
+		}
+
+		public IEnumerable<Backend> ShowBackends()
 	    {
 		    var resp = SendCommand("show backend");
 		    return ParseResponse<Backend>(resp);
