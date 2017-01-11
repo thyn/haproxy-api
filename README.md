@@ -14,13 +14,13 @@ To enable HAproxy stats api you should turn it on in global section of haproxy.c
 
 # Supported methods
 
-1. ShowErrors (string only)
+1. ShowErrors (header only)
 2. ShowBackends
 3. ShowBackendServers
 4. SetWeight
 5. DisableServer
 6. EnableServer
-7. ShowInfo (string only)
+7. ShowInfo (selected fields only)
 
 # Usage
 
