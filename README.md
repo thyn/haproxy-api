@@ -1,5 +1,10 @@
 # HAProxy Api Client For .Net
 
+[![NuGet](https://img.shields.io/nuget/v/HAProxyApi.Client.svg)](https://www.nuget.org/packages/HAProxyApi.Client)
+[![Join the chat at https://gitter.im/haproxy-api](https://img.shields.io/gitter/room/haproxy-api/haproxy-api.svg)](https://gitter.im/haproxy-api)
+
+
+
 Simple C# library to control HAProxy over TCP port.
 
 # Installation
