@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>HAProxyApi.Client</id>
+		<version>$version$</version>
+		<authors>Aleksey Gordeev</authors>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Simple C# library to control HaProxy over TCP port.</description>
+		<copyright>Copyright Aleksey Gordeev</copyright>
+		<tags>haproxy, api, remote management</tags>
+		<language>en-US</language>
+		<projectUrl>https://github.com/thyn/haproxy-api</projectUrl>
+		<licenseUrl>https://raw.githubusercontent.com/thyn/haproxy-api/master/LICENSE.md</licenseUrl>
+		<dependencies>
+			<group>
+				<dependency id="LumenWorksCsvReader" />
+			</group>
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="\bin\Debug\HAProxyApi.Client.dll" target="lib\net40" />
+		<file src="\bin\Debug\HAProxyApi.Client.pdb" target="lib\net40" />
+	</files>
+</package>
+
+
