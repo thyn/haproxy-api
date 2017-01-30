@@ -17,10 +17,6 @@
 			</group>
 		</dependencies>
 	</metadata>
-	<files>
-		<file src="\bin\Debug\HAProxyApi.Client.dll" target="lib\net40" />
-		<file src="\bin\Debug\HAProxyApi.Client.pdb" target="lib\net40" />
-	</files>
 </package>
 
 
