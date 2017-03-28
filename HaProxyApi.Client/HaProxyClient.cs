@@ -103,7 +103,7 @@ namespace HAProxyApi.Client
 
 		public BackendServer SetWeight(string backend, string server,int weight)
 		{
-			SendCommand($"set weight {backend}/{server} {weight}",false);
+			SendCommand($"set server {backend}/{server} weight {weight}",false);
 			return ShowBackendServer(backend,server);
 		}
 
