@@ -54,6 +54,7 @@
     <Compile Include="Models\IHAProxyResponse.cs" />
     <Compile Include="Models\IShowInfoResponse.cs" />
     <Compile Include="Models\ShowInfoResponse.cs" />
+    <Compile Include="Models\ShowStatResponse.cs" />
     <Compile Include="Parsers\ShowErrorParser.cs" />
     <Compile Include="Parsers\ShowInfoParser.cs" />
     <Compile Include="Models\SrvAdmin.cs" />

@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
-using System.Resources;
 using System.Text;
-using System.Threading.Tasks;
 using HAProxyApi.Client.Models;
 using HAProxyApi.Client.Parsers;
 using LumenWorks.Framework.IO.Csv;
@@ -70,6 +67,15 @@ namespace HAProxyApi.Client
 			return SendCommand("show stat", true);
 		}
 
+        public IEnumerable<ShowStatResponse> ShowStat()
+        {
+            const char csvFieldDelimiter = ',';
+
+            var rawStats = ShowStatRaw();
+
+            return ParseResponse<ShowStatResponse>(rawStats, csvFieldDelimiter);
+        }
+
 		private string ShowErrorsRaw()
 	    {
 		    return SendCommand("show errors", true);
@@ -127,7 +133,7 @@ namespace HAProxyApi.Client
 			return state;
 		}
 
-		private IEnumerable<T> ParseResponse<T>(string raw,char delimeter = ' ')
+		private IEnumerable<T> ParseResponse<T>(string raw, char delimiter = ' ')
 	    {
 		    if (string.IsNullOrWhiteSpace(raw))
 		    {
@@ -147,7 +153,7 @@ namespace HAProxyApi.Client
 
 		    raw = raw.Trim();
 
-		    var dr = new CsvReader(new StringReader(raw), true, delimeter);
+		    var dr = new CsvReader(new StringReader(raw), true, delimiter);
 			var list = new List<T>();
 			T obj;
 			while (dr.ReadNextRecord())
@@ -158,12 +164,12 @@ namespace HAProxyApi.Client
 					var attr = prop.GetCustomAttribute<ColumnAttribute>();
 					if (attr != null)
 					{
-						if (!object.Equals(dr[attr.Name], null))
+						if (!Equals(dr[attr.Name], null))
 						{
 							SetValue(prop, obj, dr[attr.Name]);
 						}
 					} else
-					if (!object.Equals(dr[prop.Name], null))
+					if (!Equals(dr[prop.Name], null))
 					{
 						SetValue(prop, obj, dr[prop.Name]);
 					}
@@ -178,11 +184,24 @@ namespace HAProxyApi.Client
 		{
 			if (property.PropertyType.IsEnum)
 			{
-				property.SetValue(target, Int32.Parse(val));
+				property.SetValue(target, int.Parse(val));
 				return;
 			}
-			property.SetValue(target, System.Convert.ChangeType(val, property.PropertyType));
-			return;
-		}
+
+		    var type = Nullable.GetUnderlyingType(property.PropertyType);
+
+		    object safeValue;
+
+		    if (type is null)
+		    {
+		        safeValue = Convert.ChangeType(val, property.PropertyType);
+		    }
+		    else
+		    {
+		        safeValue = string.IsNullOrEmpty(val) ? null : Convert.ChangeType(val, type);
+            }
+
+            property.SetValue(target, safeValue);
+        }
     }
 }
