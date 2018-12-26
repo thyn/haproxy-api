@@ -13,7 +13,7 @@
 		<licenseUrl>https://raw.githubusercontent.com/thyn/haproxy-api/master/LICENSE.md</licenseUrl>
 		<dependencies>
 			<group>
-				<dependency id="LumenWorksCsvReader" />
+				<dependency id="LumenWorksCsvReader" version="4.0.0"/>
 			</group>
 		</dependencies>
 	</metadata>
