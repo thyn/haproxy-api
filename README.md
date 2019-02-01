@@ -31,14 +31,16 @@ To enable HAproxy stats api you should turn it on in global section of haproxy.c
 
 # Usage
 
-	var client = new HaProxyClient("SERVER.DOMAIN.TLD", port);
-	string lastError = client.ShowErrors();
-	string info = client.ShowInfo();
-	var servers = cli.ShowBackendServers();
-	foreach (var backendServer in servers)
-	{
-		Console.WriteLine($"{backendServer.BackendName}/{backendServer.Name} is {backendServer.OperationalState}");
-	}
+```c#
+var client = new HaProxyClient("SERVER.DOMAIN.TLD", port);
+string lastError = client.ShowErrors();
+string info = client.ShowInfo();
+var servers = cli.ShowBackendServers();
+foreach (var backendServer in servers)
+{
+	Console.WriteLine($"{backendServer.BackendName}/{backendServer.Name} is {backendServer.OperationalState}");
+}
+```
 
 sample result:
 
