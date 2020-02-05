@@ -4,7 +4,8 @@
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <LangVersion>8</LangVersion>
         <PackageVersion>1.0.1</PackageVersion>
-        <Title>HAProxyApi.Client2</Title>
+        <Title>HAProxyApi.Client</Title>
+        <PackageId>HAProxyApi.Client2</PackageId>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="LumenWorksCsvReader" Version="4.0.0" />
