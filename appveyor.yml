@@ -20,13 +20,9 @@ dotnet_csproj:
   informational_version: '{version}'
 before_build:
 - cmd: nuget restore
-nuget:
-  account_feed: true
-  project_feed: true
 build:
-  project: HaProxyApi.Client.sln
   publish_nuget: true
-  verbosity: normal
+  verbosity: minimal
 artifacts:
 - path: '**\*.nupkg'
 deploy:

@@ -3,7 +3,8 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <LangVersion>8</LangVersion>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageVersion>1.0.1</PackageVersion>
+        <Title>HAProxyApi.Client</Title>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="LumenWorksCsvReader" Version="4.0.0" />
