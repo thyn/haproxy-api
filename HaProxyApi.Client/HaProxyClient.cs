@@ -69,7 +69,7 @@ namespace HAProxyApi.Client
             return SendCommand("show stat", true);
         }
 
-        public IEnumerable<ShowStatResponse> ShowStat()
+        public IEnumerable<IShowStatResponse> ShowStat()
         {
             const char csvFieldDelimiter = ',';
 

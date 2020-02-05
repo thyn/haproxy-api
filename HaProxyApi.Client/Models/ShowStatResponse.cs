@@ -3,7 +3,7 @@
 
 namespace HAProxyApi.Client.Models
 {
-    public class ShowStatResponse
+    internal class ShowStatResponse : IShowStatResponse
     {
         [Column("pxname")]
         public string ProxyName { get; set; }
@@ -28,6 +28,9 @@ namespace HAProxyApi.Client.Models
 
         [Column("hrsp_5xx")]
         public int? Http5xxResponseCount { get; set; }
+        
+        [Column("hrsp_other")]
+        public int? HttpOtherResponseCount { get; set; }
 
         [Column("status")]
         public string Status { get; set; }
