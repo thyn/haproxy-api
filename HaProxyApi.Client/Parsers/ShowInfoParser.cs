@@ -15,29 +15,38 @@ namespace HAProxyApi.Client.Parsers
 
 			if (!string.IsNullOrEmpty(rawShowInfoResult))
 			{
-				var matchResult = Regex.Matches(rawShowInfoResult, @"(?<key>[\w-]+): (?<value>.+)$", RegexOptions.Multiline);
+				const string pattern = @"(?<key>[\w-]+): (?<value>.+)$";
+				
+				var matchResult = Regex.Matches(rawShowInfoResult, pattern, RegexOptions.Multiline);
 
 				if (matchResult.Count != 0)
 				{
 					foreach (Match match in matchResult)
 					{
-						if (!match.Success) continue;
+						if (!match.Success)
+						{
+							continue;
+						}
+
 						propertyDictionary[match.Groups["key"].Value] = match.Groups["value"].Value;
 					}
 				}
 			}
-			return  GetResult(rawShowInfoResult, propertyDictionary);
+			
+			return GetResult(rawShowInfoResult, propertyDictionary);
 		}
-
 
 		protected virtual ShowInfoResponse GetResult(string raw, Dictionary<string, string> properties)
 		{
 			if (string.IsNullOrWhiteSpace(raw) || properties == null || !properties.Any())
-				return new ShowInfoResponse()
+			{
+				return new ShowInfoResponse
 				{
 					Raw = raw
 				};
-			return new ShowInfoResponse()
+			}
+
+			return new ShowInfoResponse
 			{
 				Name = GetValue<string>(properties, "Name"),
 				Version = GetValue<string>(properties, "Version"),
@@ -50,17 +59,23 @@ namespace HAProxyApi.Client.Parsers
 			};
 		}
 
-		private T GetValue<T>(Dictionary<string, string> properties, string propertyName)
+		private static T GetValue<T>(IReadOnlyDictionary<string, string> properties, string propertyName)
 		{
 			if (!properties.ContainsKey(propertyName))
-				return default(T);
+			{
+				return default;
+			}
+
 			return (T)Convert.ChangeType(properties[propertyName], typeof(T));
 		}
 
-		private DateTime? GetDateTime(Dictionary<string, string> properties, string propertyName)
+		private static DateTime? GetDateTime(IReadOnlyDictionary<string, string> properties, string propertyName)
 		{
 			if (!properties.ContainsKey(propertyName))
+			{
 				return null;
+			}
+
 			return DateTime.ParseExact(properties[propertyName], "yyyy/MM/dd", CultureInfo.InvariantCulture);
 		}
 	}
