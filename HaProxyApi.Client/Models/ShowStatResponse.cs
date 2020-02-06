@@ -1,9 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-// ReSharper disable InconsistentNaming
-
-namespace HAProxyApi.Client.Models
+﻿namespace HAProxyApi.Client.Models
 {
-    internal class ShowStatResponse : IShowStatResponse
+    public class ShowStatResponse : IShowStatResponse
     {
         [Column("pxname")]
         public string ProxyName { get; set; }
