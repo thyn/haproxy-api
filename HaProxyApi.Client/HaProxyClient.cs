@@ -142,14 +142,14 @@ namespace HAProxyApi.Client
         {
             if (string.IsNullOrWhiteSpace(raw))
             {
-                return Enumerable.Empty<T>();
+                yield break;
             }
 
             var indexOfSharp = raw.IndexOf("#", StringComparison.Ordinal);
 
             if (indexOfSharp == 0 && raw.Length == 1)
             {
-                return Enumerable.Empty<T>();
+                yield break;
             }
 
             if (indexOfSharp >= 0)
@@ -159,35 +159,31 @@ namespace HAProxyApi.Client
 
             raw = raw.Trim();
 
-            var dr = new CsvReader(new StringReader(raw), true, delimiter);
-
-            var list = new List<T>();
-
-            while (dr.ReadNextRecord())
+            var reader = new CsvReader(new StringReader(raw), true, delimiter);
+            
+            while (reader.ReadNextRecord())
             {
-                var obj = Activator.CreateInstance<T>();
+                var item = Activator.CreateInstance<T>();
 
-                foreach (var prop in obj.GetType().GetProperties())
+                foreach (var prop in item.GetType().GetProperties())
                 {
                     var attr = prop.GetCustomAttribute<ColumnAttribute>();
 
                     if (attr != null)
                     {
-                        if (!Equals(dr[attr.Name], null))
+                        if (reader[attr.Name] != null)
                         {
-                            SetValue(prop, obj, dr[attr.Name]);
+                            SetValue(prop, item, reader[attr.Name]);
                         }
                     }
-                    else if (!Equals(dr[prop.Name], null))
+                    else if (reader[prop.Name] != null)
                     {
-                        SetValue(prop, obj, dr[prop.Name]);
+                        SetValue(prop, item, reader[prop.Name]);
                     }
                 }
 
-                list.Add(obj);
+                yield return item;
             }
-
-            return list;
         }
 
         private static void SetValue(PropertyInfo property, object target, string val)
