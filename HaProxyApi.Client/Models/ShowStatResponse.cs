@@ -1,4 +1,6 @@
-﻿namespace HAProxyApi.Client.Models
+﻿using System.ComponentModel;
+
+namespace HAProxyApi.Client.Models
 {
     public class ShowStatResponse : IShowStatResponse
     {
@@ -40,5 +42,11 @@
 
         [Column("downtime")]
         public int? TotalBackendDowntime { get; set; }
+
+        [Column("act")]
+        public int? ActiveServerCount { get; set; }
+        
+        [Column("bck")]
+        public int? BackupServerCount { get; set; }
     }
 }

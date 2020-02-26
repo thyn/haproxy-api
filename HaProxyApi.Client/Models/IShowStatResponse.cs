@@ -27,5 +27,9 @@ namespace HAProxyApi.Client.Models
         int? CheckDownCount { get; }
         
         int? TotalBackendDowntime { get; }
+        
+        int? ActiveServerCount { get; }
+        
+        int? BackupServerCount { get; }
     }
 }
