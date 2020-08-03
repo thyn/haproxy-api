@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace HAProxyApi.Client.Models
+﻿namespace HAProxyApi.Client.Models
 {
     public class ShowStatResponse : IShowStatResponse
     {
@@ -48,5 +46,17 @@ namespace HAProxyApi.Client.Models
         
         [Column("bck")]
         public int? BackupServerCount { get; set; }
+        
+        [Column("scur")]
+        public int? CurrentSessionCount { get; set; }
+        
+        [Column("smax")]
+        public int? MaxSessionCount { get; set; }
+
+        [Column("slim")]
+        public int? SessionLimit { get; set; }
+        
+        [Column("stot")]
+        public int? SessionTotalCount { get; set; }
     }
 }

@@ -31,5 +31,13 @@ namespace HAProxyApi.Client.Models
         int? ActiveServerCount { get; }
         
         int? BackupServerCount { get; }
+        
+        int? CurrentSessionCount { get; }
+        
+        int? MaxSessionCount { get; }
+        
+        int? SessionLimit { get; }
+        
+        int? SessionTotalCount { get; }
     }
 }
