@@ -68,6 +68,16 @@ namespace HAProxyApi.Client
             return SendCommand("show stat", true);
         }
 
+        public void ClearCounters()
+        {
+            SendCommand("clear counters", false);
+        }
+        
+        public void ClearAllCounters()
+        {
+            SendCommand("clear counters all", false);
+        }
+
         public IEnumerable<IShowStatResponse> ShowStat()
         {
             const char csvFieldDelimiter = ',';

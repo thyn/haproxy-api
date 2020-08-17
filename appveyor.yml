@@ -1,7 +1,7 @@
 version: 1.0.{build}
 branches:
   only:
-  - master
+  - production
 skip_tags: true
 image: Visual Studio 2019
 dotnet_csproj:
@@ -23,4 +23,4 @@ deploy:
     secure: RyILyszb2ElC1gL/2dllNpTXyzowCGTxNWVLdluhtATeolAFwMnZVAtS4G5MQ2pt
   skip_symbols: false
   on:
-    branch: master
+    branch: production

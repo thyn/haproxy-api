@@ -28,6 +28,8 @@ To enable HAproxy stats api you should turn it on in global section of haproxy.c
 6. EnableServer
 7. ShowInfo (selected fields only)
 8. ShowStat
+9. ClearCounters
+10. ClearAllCounters
 
 # Usage
 
