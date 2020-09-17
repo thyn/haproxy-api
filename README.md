@@ -1,7 +1,7 @@
 # HAProxy Api Client For .Net
 
 [![AppVeyor](https://img.shields.io/appveyor/ci/thyn/haproxy-api.svg?style=plastic)]()
-[![NuGet](https://img.shields.io/nuget/v/HAProxyApi.Client.svg)](https://www.nuget.org/packages/HAProxyApi.Client2)
+[![NuGet](https://img.shields.io/nuget/v/HAProxyApi.Client2.svg)](https://www.nuget.org/packages/HAProxyApi.Client2)
 [![Join the chat at https://gitter.im/haproxy-api](https://img.shields.io/gitter/room/haproxy-api/haproxy-api.svg)](https://gitter.im/haproxy-api)
 
 
