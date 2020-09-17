@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
 	<metadata>
-		<id>HAProxyApi.Client</id>
+		<id>HAProxyApi.Client2</id>
 		<version>$version$</version>
 		<authors>Aleksey Gordeev</authors>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
