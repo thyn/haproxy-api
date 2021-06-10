@@ -9,54 +9,54 @@
         public string ServiceName { get; set; }
 
         [Column("rtime")]
-        public int? ResponseTime { get; set; }
+        public long? ResponseTime { get; set; }
 
         [Column("hrsp_1xx")]
-        public int? Http1xxResponseCount { get; set; }
+        public long? Http1xxResponseCount { get; set; }
 
         [Column("hrsp_2xx")]
-        public int? Http2xxResponseCount { get; set; }
+        public long? Http2xxResponseCount { get; set; }
 
         [Column("hrsp_3xx")]
-        public int? Http3xxResponseCount { get; set; }
+        public long? Http3xxResponseCount { get; set; }
 
         [Column("hrsp_4xx")]
-        public int? Http4xxResponseCount { get; set; }
+        public long? Http4xxResponseCount { get; set; }
 
         [Column("hrsp_5xx")]
-        public int? Http5xxResponseCount { get; set; }
+        public long? Http5xxResponseCount { get; set; }
         
         [Column("hrsp_other")]
-        public int? HttpOtherResponseCount { get; set; }
+        public long? HttpOtherResponseCount { get; set; }
 
         [Column("status")]
         public string Status { get; set; }
 
         [Column("chkfail")]
-        public int? CheckFailCount { get; set; }
+        public long? CheckFailCount { get; set; }
 
         [Column("chkdown")]
-        public int? CheckDownCount { get; set; }
+        public long? CheckDownCount { get; set; }
 
         [Column("downtime")]
-        public int? TotalBackendDowntime { get; set; }
+        public long? TotalBackendDowntime { get; set; }
 
         [Column("act")]
-        public int? ActiveServerCount { get; set; }
+        public long? ActiveServerCount { get; set; }
         
         [Column("bck")]
-        public int? BackupServerCount { get; set; }
+        public long? BackupServerCount { get; set; }
         
         [Column("scur")]
-        public int? CurrentSessionCount { get; set; }
+        public long? CurrentSessionCount { get; set; }
         
         [Column("smax")]
-        public int? MaxSessionCount { get; set; }
+        public long? MaxSessionCount { get; set; }
 
         [Column("slim")]
-        public int? SessionLimit { get; set; }
+        public long? SessionLimit { get; set; }
         
         [Column("stot")]
-        public int? SessionTotalCount { get; set; }
+        public long? SessionTotalCount { get; set; }
     }
 }

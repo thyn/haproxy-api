@@ -80,11 +80,7 @@ namespace HAProxyApi.Client
 
         public IEnumerable<IShowStatResponse> ShowStat()
         {
-            const char csvFieldDelimiter = ',';
-
-            var rawStats = ShowStatRaw();
-
-            return ParseResponse<ShowStatResponse>(rawStats, csvFieldDelimiter);
+            return new ShowStatParser().Parse(ShowStatRaw());
         }
 
         private string ShowErrorsRaw()
@@ -148,7 +144,7 @@ namespace HAProxyApi.Client
             return state;
         }
 
-        private static IEnumerable<T> ParseResponse<T>(string raw, char delimiter = ' ')
+        internal static IEnumerable<T> ParseResponse<T>(string raw, char delimiter = ' ')
         {
             if (string.IsNullOrWhiteSpace(raw))
             {
