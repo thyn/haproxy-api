@@ -5,7 +5,7 @@
         <LangVersion>8</LangVersion>
         <PackageVersion>1.0.1</PackageVersion>
         <Title>HAProxyApi.Client</Title>
-        <PackageId>HAProxyApi.Client2</PackageId>
+        <PackageId>HAProxyApi.Client</PackageId>
     </PropertyGroup>
     <ItemGroup>
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
