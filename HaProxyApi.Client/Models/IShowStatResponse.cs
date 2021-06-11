@@ -6,38 +6,38 @@ namespace HAProxyApi.Client.Models
         
         string ServiceName { get; }
         
-        int? ResponseTime { get; }
+        long? ResponseTime { get; }
         
-        int? Http1xxResponseCount { get; }
+        long? Http1xxResponseCount { get; }
         
-        int? Http2xxResponseCount { get; }
+        long? Http2xxResponseCount { get; }
         
-        int? Http3xxResponseCount { get; }
+        long? Http3xxResponseCount { get; }
         
-        int? Http4xxResponseCount { get; }
+        long? Http4xxResponseCount { get; }
         
-        int? Http5xxResponseCount { get; }
+        long? Http5xxResponseCount { get; }
         
-        int? HttpOtherResponseCount { get; }
+        long? HttpOtherResponseCount { get; }
         
         string Status { get; }
         
-        int? CheckFailCount { get; }
+        long? CheckFailCount { get; }
         
-        int? CheckDownCount { get; }
+        long? CheckDownCount { get; }
         
-        int? TotalBackendDowntime { get; }
+        long? TotalBackendDowntime { get; }
         
-        int? ActiveServerCount { get; }
+        long? ActiveServerCount { get; }
         
-        int? BackupServerCount { get; }
+        long? BackupServerCount { get; }
         
-        int? CurrentSessionCount { get; }
+        long? CurrentSessionCount { get; }
         
-        int? MaxSessionCount { get; }
+        long? MaxSessionCount { get; }
         
-        int? SessionLimit { get; }
+        long? SessionLimit { get; }
         
-        int? SessionTotalCount { get; }
+        long? SessionTotalCount { get; }
     }
 }
